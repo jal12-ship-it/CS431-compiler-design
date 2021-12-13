@@ -5,7 +5,6 @@ char *str;
 int nfa(char *string,int state)
 {
 	int i,j;
-	printf("\t");
 	for(i=0;i<=row;i++)
         {
 	        if(*string)
@@ -20,7 +19,7 @@ int nfa(char *string,int state)
                 {	
                 	if(states[1][i]==-1)
                 		break;
-               	if(state==states[1][i])
+               		if(state==states[1][i])
               			return 1;
               	}
 	}
