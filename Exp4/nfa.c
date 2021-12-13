@@ -1,25 +1,26 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 int Fa[10][10][10],states[2][10],curr,row=0,col=0,sr=0,sc=0,th=0,in;
 char *str;
 int nfa(char *string,int state)
 {
 	int i,j;
+	printf("\t");
 	for(i=0;i<=row;i++)
         {
 	        if(*string)
 	        {
-		        curr=Fa[state][*string-97][i];
-
+		        curr=Fa[state][*string-48][i];
         		if (curr==-1)
                 		break;
                 	if(nfa(string+1,curr))
                 		return 1;
                 }
             	else
-                {
+                {	
                 	if(states[1][i]==-1)
                 		break;
-               		if(state==states[1][i])
+               	if(state==states[1][i])
               			return 1;
               	}
 	}
@@ -31,7 +32,7 @@ int main()
 	FILE *fp;
 	int i,j,k,flag=0;
 	char c,ch;
-	fp=fopen("input.txt","r");
+	fp=fopen("input.txt","r+");
 	for(i=0;i<2;i++)
 		for(j=0;j<10;j++)
 			states[i][j]=-1;
@@ -82,14 +83,12 @@ int main()
 	        	}
 		}	
 	}
-
-	printf("\n\nEnter the string : \n");
+	str = (char*)malloc(100*sizeof(char));
+	printf("\n\nEnter the string : ");
 	scanf("%s",str);
-
 	if(nfa(str,states[0][0]))
-		printf("\nString Is Accepted");
+		printf("\nString Is Accepted\n");
 	else
-		printf("\nString Not Accepted");
-
+		printf("\nString Not Accepted\n");
 	return 0;
-} 
+}
