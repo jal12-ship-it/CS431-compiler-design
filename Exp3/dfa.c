@@ -1,7 +1,7 @@
 #include<stdio.h>
 int ninputs;
 
-int check(char, int);          //function declaration
+int check(char, int);          
 int dfa[10][10];
 char c[10], string[10];
 int main()
@@ -31,12 +31,12 @@ int main()
      
      printf("-----------------------------------------------------------------------");
      printf("\n\ndefine transition rule as (initial state, input symbol ) = final state\n");
-     for(i=0; i<nstates; i++)
+     for(i=0; i<ninputs; i++)
      {
-              for(j=0; j<ninputs; j++)
+              for(j=0; j<nstates; j++)
               {
-                       printf("\n(q%d , %c ) = q",i,c[j]);
-                       scanf("%d",&dfa[j][i]);
+                       printf("\n(q%d , %c ) = q",j,c[i]);
+                       scanf("%d",&dfa[i][j]);
               }
      }
 	
@@ -65,9 +65,7 @@ int main()
 
 int check(char b,int d)
 {
-    int j;
-    for(j=0; j<ninputs; j++)
+    for(int j=0; j<ninputs; j++)
     	if(b==c[j])
-    		return(dfa[d][j]);
+    		return(dfa[j][d]);
     return -1;   
-}
