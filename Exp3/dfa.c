@@ -42,7 +42,7 @@ int main()
 	
      do
      {
-     	i=0;
+     	i=0; s=0; final=0;
      	printf("\n\nEnter Input String.. ");
      	scanf("%s",string);
      	while(string[i]!='\0')
@@ -69,3 +69,4 @@ int check(char b,int d)
     	if(b==c[j])
     		return(dfa[j][d]);
     return -1;   
+}
